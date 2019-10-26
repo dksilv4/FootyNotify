@@ -1,1 +1,1 @@
-{"+447535186331": ["Crystal Palace"], "+447555679010": ["Real Madrid", "Crystal Palace", "Manchester City"]}
+{"+447535186331": ["Crystal Palace", "Benfica B", "FC Porto"], "+447555679010": ["Real Madrid", "Crystal Palace", "Manchester City"]}

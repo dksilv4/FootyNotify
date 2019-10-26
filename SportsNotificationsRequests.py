@@ -16,7 +16,7 @@ def search_for_name(team_name):
 
     fatList = data['api']['teams']
     result = (fatList[0]["name"])
-
+    print(fatList[0])
     return result
 
 
