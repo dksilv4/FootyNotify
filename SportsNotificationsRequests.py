@@ -19,8 +19,6 @@ def search_for_name(team_name):
     fatList = data['api']['teams']
     result = (fatList[0]["name"])
 
-    ##print data['teams']
-    print result
     return result
 
 
@@ -39,9 +37,6 @@ def search_for_team_id(team_name):
 
     fatList = data['api']['teams']
     result = (fatList[0]["team_id"])
-
-    ##print data['teams']
-    print result
     return result
 
 def search_for_team_details(team_name):
@@ -58,5 +53,4 @@ def search_for_team_details(team_name):
     data = json.loads(response.text)
 
     fatList = data['api']['teams']
-    print fatList[0]
     return fatList[0]

@@ -3,7 +3,7 @@ from flask import request
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 import json
-import SportsNotificationsRequests
+import SportsNotificationsRequests as sport
 
 account_sid = 'ACCOUNT_SID'
 auth_token = 'AUTH_TOKEN_TWILIO'
@@ -26,8 +26,7 @@ def main():
     print(response)
     msg_body = request.form["Body"]
     from_no = request.form['From']
-
-    team_name = search(msg_body)
+    team_name = sport.search_for_name(msg_body)
     response.append('To confirm the subscription for the team {}, please reply with yes.'.format(team_name))
     pending.append([from_no, team_name])
     for sub in subscribers:
@@ -46,7 +45,6 @@ def main():
                 print('dumped')
     return str(response)
 
-def search(input):
 
 
 if __name__ == '__main__':
