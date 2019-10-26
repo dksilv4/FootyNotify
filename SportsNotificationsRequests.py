@@ -1,72 +1,52 @@
 import requests
 import json
 
+userTeam = "Deportivo Capiata" ##type in team that are playing live
 
-def search_for_name(team_name):
-    url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
+url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/"+userTeam
 
-    headers = {
-        'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': "c50156e257msh58be36df0d85bfep10de4cjsn14479e1c8f49"
-    }  # must hide
+headers = {
+    'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
+    'x-rapidapi-key': "c50156e257msh58be36df0d85bfep10de4cjsn14479e1c8f49"
+    }
 
-    response = requests.request("GET", url, headers=headers)
+response = requests.request("GET", url, headers=headers)
 
-    data = json.loads(response.text)
+data = json.loads(response.text)
 
-    fatList = data['api']['teams']
-    result = (fatList[0]["name"])
-    print(fatList[0])
-    return result
+fatList = data['api']['teams']
 
+teamName = fatList[0]["name"]
+teamID = fatList[0]["team_id"]
 
-def search_for_team_id(team_name):
-    url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
+print(teamID)
+print(teamName)
 
-    headers = {
-        'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': "c50156e257msh58be36df0d85bfep10de4cjsn14479e1c8f49"
-    }  # must hide
+url2 = "https://api-football-v1.p.rapidapi.com/v2/fixtures/live/"
 
-    response = requests.request("GET", url, headers=headers)
+##Uses london timezone
+querystring = {"timezone":"Europe/London"}
 
-    data = json.loads(response.text)
+##requests Live fixtures
+response2 = requests.request("GET", url2, headers=headers, params=querystring)
 
-    fatList = data['api']['teams']
-    result = (fatList[0]["team_id"])
-    return result
+##Saves response in JSON format
+liveGameData = json.loads(response2.text)
+liveGameList = liveGameData['api']['fixtures']
+print(liveGameList) ##prints list of current live games around the world (amazing how many games of professional football there is)
 
-
-def search_for_team_details(team_name):
-    url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
-
-    headers = {
-        'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': "c50156e257msh58be36df0d85bfep10de4cjsn14479e1c8f49"
-    }  # must hide
-
-    response = requests.request("GET", url, headers=headers)
-
-    data = json.loads(response.text)
-
-    fatList = data['api']['teams']
-    return fatList[0]
+##length of list to run for loop counter
+listLength =len(liveGameList)
+for x in range(listLength-1): ##takes list element, uses dict in a dict to grab team ID comparison
+    y = liveGameList[x]
+    if ((y['homeTeam']['team_id'] == teamID) or (y['awayTeam']['team_id'] == teamID)):
+        ##formats score
+        print((y['homeTeam']['team_name'])+" "+str(y['goalsHomeTeam'])+"-"+str(y['goalsAwayTeam'])+" "+(y['awayTeam']['team_name']))
 
 
-def search_to_file(team_name):
-    url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
-
-    headers = {
-        'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': "c50156e257msh58be36df0d85bfep10de4cjsn14479e1c8f49"
-    }  # must hide
-
-    response = requests.request("GET", url, headers=headers)
-
-    data = json.loads(response.text)
-
-    fatList = data['api']['teams']
-    filewrite = open('testAPI.txt', 'a+').write(str(fatList[0]))
 
 
-search_to_file("Barcelona")
+
+
+
+
