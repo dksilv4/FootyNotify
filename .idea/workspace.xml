@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36ad893a-1c2e-4c71-9e55-7885c6a47648" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/SportsNotificationsRequests.py" beforeDir="false" afterPath="$PROJECT_DIR$/SportsNotificationsRequests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SubList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SubList.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="36ad893a-1c2e-4c71-9e55-7885c6a47648" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+            <state relative-caret-position="406">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -231,7 +227,7 @@
       <updated>1572097431888</updated>
       <workItem from="1572097437956" duration="6260000" />
       <workItem from="1572121524622" duration="1908000" />
-      <workItem from="1572123827198" duration="2260000" />
+      <workItem from="1572123827198" duration="2685000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1572100839993</created>
@@ -265,7 +261,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2260000" />
+    <option name="totallyTimeSpent" value="2685000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="401" y="0" width="1279" height="1050" extended-state="6" />
@@ -357,8 +353,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+        <state relative-caret-position="406">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
