@@ -6,12 +6,6 @@ from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 
 
-# sublist = open('SubList.txt', 'r').read().split('\n')
-# for sub in sublist:
-#     x = sub.split(', ')
-#     print(x)
-
-
 def hello_world():
     print("hello world")
 
@@ -40,17 +34,57 @@ client = Client(account_sid, auth_token)
 
 app = Flask(__name__)
 
+confirming_num = []
+confirming_code = []
+subs = []
+sublist = open('SubList.txt', 'r').read().split('\n')
+for sub in sublist:
+    x = sub.split(', ')
+    subs.append(x)
+
+
+def subscribe(num):
+    for i in range(0, len(confirming_num) - 1):
+        if num == confirming_num[i]:
+            code = confirming_code[i]
+            subs.append([confirming_num, confirming_code])
+            number = '\n{}, {}'.format(num, code)
+            sub_file = open('SubList.txt', 'a+')
+            sub_file.write(number)
+
+
+def check_sub(num):
+    for subscriber in subs:
+        if num == subscriber[0]:
+            return True
+    return False
+
 
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
     resp = MessagingResponse()
-    incText = request.form["Body"]
-    if incText.lower() == 'diogo':
-        resp.message("Diogo Reply.")
-    else:
-        resp.message("HI!")
-    return str(resp)
+    print(request.form)
+    requestForm = request.form
+    from_body = requestForm["Body"]
+    from_no = requestForm['From']
+    if not check_sub(from_no):
 
+        if from_body.lower() == 'crystal palace':
+            resp.message("Please text YES to confirm subscription.")
+            confirming_num.append(requestForm['From'])
+            confirming_code.append('Crystal Palace')
+        if from_no in confirming_num:
+            if from_body == 'YES':
+                resp.message("Thank you for your subscription!")
+                print(from_no)
+                subscribe(from_no)
+
+        else:
+            resp.message(
+                "Hi! Thanks for texting but the option you gave us is invalid. Have a nice day! If you'd like to get a list of the available sevices please text HELP!")
+    else:
+        resp.message("This number is already subscribed to crystal palace.")
+    return str(resp)
 
 
 if __name__ == '__main__':
