@@ -23,28 +23,26 @@ pending = []
 @app.route("/sms", methods=['GET', 'POST'])
 def main():
     response = MessagingResponse()
-    print(response)
+    print(request.form)
     msg_body = request.form["Body"]
     from_no = request.form['From']
-    team_name = sport.search_for_name(msg_body)
-    response.append('To confirm the subscription for the team {}, please reply with yes.'.format(team_name))
-    pending.append([from_no, team_name])
-    for sub in subscribers:
-        if sub == from_no:
-            for team in sub[from_no]:
-                if team == team_name:
-                    response.message("You have already subscribed to {}.".format(team_name))
+    print(msg_body, from_no)
 
     for temp in pending:
         if from_no == temp[0]:
             if msg_body == 'yes':
                 response.message('You have subbed!')
-                subscribers[temp[0]] = [temp[1]]
+                subscribers[temp[0]].append(temp[1])
                 pending.remove(temp)
                 json.dump(subscribers, open('SubList.txt', 'w+'))
                 print('dumped')
-    return str(response)
+                return str(response)
 
+    team_name = sport.search_for_name(msg_body)
+    response.message('To confirm the subscription for the team {}, please reply with yes.'.format(team_name))
+    pending.append([from_no, team_name])
+
+    return str(response)
 
 
 if __name__ == '__main__':
