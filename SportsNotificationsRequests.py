@@ -15,7 +15,7 @@ response = requests.request("GET", url, headers=headers)
 data = json.loads(response.text)
 
 fatList = data['api']['teams']
-print(fatList[0]["team_id"])
+print(fatList)
 
 
 ##print data['teams']
