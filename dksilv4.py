@@ -4,6 +4,7 @@ from flask import Flask
 from flask import request
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
+import os
 
 
 # sublist = open('SubList.txt', 'r').read().split('\n')
@@ -29,8 +30,8 @@ class Verify:
         pass
 
 
-account_sid = 'ACa2785a9fb95337394fca6899a00b6471'
-auth_token = '7b32c31d0d7abd7b1cfef757c65469fd'
+account_sid = os.environ.get('ACCOUNT_SID')
+auth_token = os.environ.get('AUTH_TOKEN_TWILIO')
 client = Client(account_sid, auth_token)
 
 # messages = client.messages.list(limit=20)
