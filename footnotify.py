@@ -1,12 +1,16 @@
 from twilio.rest import Client
+import os
+
 
 # Your Account Sid and Auth Token from twilio.com/console
 # DANGER! This is insecure. See http://twil.io/secure
-account_sid = 'ACa14f2aadd6b055efaaf15bffd0940e21'
-auth_token = '9ce072261b0aace7bb782da01248b07e'
+account_sid = 'ACa2785a9fb95337394fca6899a00b6471'
+auth_token = '7b32c31d0d7abd7b1cfef757c65469fd'
 
 from flask import Flask
+from flask import request
 from twilio.twiml.messaging_response import MessagingResponse
+
 client = Client(account_sid, auth_token)
 app = Flask(__name__)
 
@@ -14,8 +18,9 @@ app = Flask(__name__)
 @app.route("/sms", methods=['GET', 'POST'])
 # This function replies to incoming messages. To be improved.
 def sms_reply():
+    data = request.args["Body"]
+    print(data)
 
-    print(client.messages.list([-1]))
     """Respond to incoming messages with a friendly SMS."""
     # Start our response
     resp = MessagingResponse()
@@ -23,8 +28,6 @@ def sms_reply():
     resp.message("Test Reply.")
 
     return str(resp)
-    """def hello():
-return ("Hello Team\n dogo \n alex")"""
 
 
 if __name__ == "__main__":
