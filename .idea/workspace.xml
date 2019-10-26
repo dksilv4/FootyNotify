@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36ad893a-1c2e-4c71-9e55-7885c6a47648" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/SportsNotificationsRequests.py" beforeDir="false" afterPath="$PROJECT_DIR$/SportsNotificationsRequests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SubList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SubList.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testAPI.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,6 +10,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
@@ -52,12 +51,26 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="marcy" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
+
+
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -71,27 +84,9 @@
     <option name="x" value="188" />
     <option name="width" value="1492" />
     <option name="height" value="1050" />
+
   </component>
   <component name="ProjectId" id="1SkHEdKeHqzWWOfr27ia7coZ1Iu" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Hack-The-Midlands-Projects" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Hack-The-Midlands-Projects" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -120,7 +115,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.SportsNotificationsRequests">
     <configuration name="SportsNotificationsRequests" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Hack-The-Midlands-Projects" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -211,8 +206,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.SportsNotificationsRequests" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.dksilv4" />
         <item itemvalue="Python.scheduler" />
       </list>
@@ -229,6 +224,11 @@
       <option name="presentableId" value="Default" />
       <updated>1572097431888</updated>
       <workItem from="1572097437956" duration="6260000" />
+
+      <workItem from="1572121524622" duration="4562000" />
+      <workItem from="1572126958798" duration="339000" />
+      <workItem from="1572127321928" duration="1804000" />
+
       <workItem from="1572121524622" duration="1908000" />
       <workItem from="1572123827198" duration="4807000" />
     </task>
@@ -254,13 +254,20 @@
       <updated>1572122534286</updated>
     </task>
     <task id="LOCAL-00004" summary="changes to the sports classes. created functions to return to main">
-      <created>1572123961873</created>
+      <created>1572123579243</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1572123961873</updated>
+      <updated>1572123579243</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changes to the sports classes. created functions to return to main">
+      <created>1572129114265</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1572129114266</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -325,27 +332,8 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
+              <option name="COLUMN_ORDER" />
             </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
           </value>
         </entry>
       </map>
@@ -358,6 +346,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="changes to the sports classes. created functions to return to main" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$dksilv4.coverage" NAME="dksilv4 Coverage Results" MODIFIED="1572104467765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$scheduler.coverage" NAME="scheduler Coverage Results" MODIFIED="1572101258821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$SportsNotificationsRequests.coverage" NAME="SportsNotificationsRequests Coverage Results" MODIFIED="1572128863591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$main.coverage" NAME="main Coverage Results" MODIFIED="1572124539566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+
     <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$SportsNotificationsRequests.coverage" NAME="SportsNotificationsRequests Coverage Results" MODIFIED="1572123167392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$scheduler.coverage" NAME="scheduler Coverage Results" MODIFIED="1572101258821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$main.coverage" NAME="main Coverage Results" MODIFIED="1572128116916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -399,5 +392,6 @@
     <entry file="file://$PROJECT_DIR$/subs.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+
   </component>
 </project>
