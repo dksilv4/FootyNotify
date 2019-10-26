@@ -4,7 +4,7 @@ import SportsNotificationsRequests.py
 class Team:
     def __init__(self, teamName=None, leagueName=None, standing=None):
         self.teamName = teamName
-        self.leagueName = leagueName
+        """self.leagueName = leagueName"""
         self.standing = standing
 
 

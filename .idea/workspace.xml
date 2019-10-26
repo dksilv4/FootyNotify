@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="36ad893a-1c2e-4c71-9e55-7885c6a47648" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SportsNotificationsObjects.py" beforeDir="false" afterPath="$PROJECT_DIR$/SportsNotificationsObjects.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SportsNotificationsRequests.py" beforeDir="false" afterPath="$PROJECT_DIR$/SportsNotificationsRequests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +142,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572097431888</updated>
       <workItem from="1572097437956" duration="6260000" />
-      <workItem from="1572121524622" duration="987000" />
+      <workItem from="1572121524622" duration="1908000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1572100839993</created>
@@ -159,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572121695234</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="changes to the sports classes. created functions to return to main">
+      <created>1572122534286</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1572122534286</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,11 +185,33 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changes" />
     <MESSAGE value="changes to the sports classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes to the sports classes" />
+    <MESSAGE value="changes to the sports classes. created functions to return to main" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes to the sports classes. created functions to return to main" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SportsNotificationsRequests.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SportsNotificationsRequests.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SportsNotificationsRequests.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$dksilv4.coverage" NAME="dksilv4 Coverage Results" MODIFIED="1572104467765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$scheduler.coverage" NAME="scheduler Coverage Results" MODIFIED="1572101258821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$SportsNotificationsRequests.coverage" NAME="SportsNotificationsRequests Coverage Results" MODIFIED="1572122365577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Hack_The_Midlands_Projects$SportsNotificationsRequests.coverage" NAME="SportsNotificationsRequests Coverage Results" MODIFIED="1572123167392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

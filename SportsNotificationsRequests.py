@@ -57,9 +57,5 @@ def search_for_team_details(team_name):
     data = json.loads(response.text)
 
     fatList = data['api']['teams']
-    ##print data['teams']
     print fatList[0]
     return fatList[0]
-
-
-search_for_team_details("real madrid")
