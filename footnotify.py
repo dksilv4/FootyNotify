@@ -7,17 +7,18 @@ auth_token = '9ce072261b0aace7bb782da01248b07e'
 
 from flask import Flask
 from twilio.twiml.messaging_response import MessagingResponse
-
+client = Client(account_sid, auth_token)
 app = Flask(__name__)
 
 
 @app.route("/sms", methods=['GET', 'POST'])
 #This function replies to incoming messages. To be improved.
 def sms_reply():
+
+    print(client.messages.list([-1]))
     """Respond to incoming messages with a friendly SMS."""
     # Start our response
     resp = MessagingResponse()
-
     # Add a message
     resp.message("Test Reply.")
 
