@@ -1,6 +1,7 @@
 from datetime import datetime
 from threading import Timer
 from flask import Flask
+from flask import request
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 
@@ -43,7 +44,11 @@ app = Flask(__name__)
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
     resp = MessagingResponse()
-    resp.message("Test Reply.")
+    incText = request.form["Body"]
+    if incText.lower() == 'diogo':
+        resp.message("Diogo Reply.")
+    else:
+        resp.message("HI!")
     return str(resp)
 
 
