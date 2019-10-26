@@ -1,0 +1,1 @@
+{u'venue_surface': u'grass', u'code': None, u'name': u'Barcelona', u'venue_name': u'Camp Nou', u'country': u'Spain', u'founded': 1899, u'team_id': 529, u'venue_capacity': 99787, u'venue_address': u'Carrer d&apos;Ar\xedstides Maillol', u'logo': u'https://media.api-football.com/teams/529.png', u'venue_city': u'Barcelona'}
