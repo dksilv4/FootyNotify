@@ -25,7 +25,7 @@ def main():
     print(response)
     msg_body = request.form["Body"]
     from_no = request.form['From']
-
+    
     if msg_body == 'cp':
         response.message("Confirm with YES.")
         pending.append([from_no, 'Crystal Palace'])
