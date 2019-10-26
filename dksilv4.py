@@ -1,24 +1,14 @@
 from datetime import datetime
 from threading import Timer
-import schedule
-import time
+from flask import Flask
+from twilio.twiml.messaging_response import MessagingResponse
+from twilio.rest import Client
 
 
-def job(t):
-    print("I'm working...", t)
-    return
-
-
-schedule.every().day.at("01:00").do(job, 'It is 01:00')
-
-while True:
-    schedule.run_pending()
-    time.sleep(60)  # wait one minute
-sublist = open('SubList.txt', 'r').read().split('\n')
-
-for sub in sublist:
-    x = sub.split(', ')
-    print(x)
+# sublist = open('SubList.txt', 'r').read().split('\n')
+# for sub in sublist:
+#     x = sub.split(', ')
+#     print(x)
 
 
 def hello_world():
@@ -38,13 +28,25 @@ class Verify:
         pass
 
 
+account_sid = 'ACa2785a9fb95337394fca6899a00b6471'
+auth_token = '7b32c31d0d7abd7b1cfef757c65469fd'
+client = Client(account_sid, auth_token)
+
+# messages = client.messages.list(limit=20)
+# for msg in messages:
+#     x = client.messages(msg.sid).fetch()
+#     print(x)
+
+app = Flask(__name__)
+
+
+@app.route("/sms", methods=['GET', 'POST'])
+def sms_reply():
+    resp = MessagingResponse()
+    resp.message("Test Reply.")
+    return str(resp)
+
+
+
 if __name__ == '__main__':
-    x = datetime.today()
-    y = x.replace(day=x.day + 1, hour=15, minute=29, second=0, microsecond=0)
-    delta_t = y - x
-
-    secs = delta_t.seconds + 1
-
-    t = Timer(secs, hello_world)
-    t.start()
-    pass
+    app.run(debug=True)

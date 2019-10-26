@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 
 @app.route("/sms", methods=['GET', 'POST'])
-#This function replies to incoming messages. To be improved.
+# This function replies to incoming messages. To be improved.
 def sms_reply():
     """Respond to incoming messages with a friendly SMS."""
     # Start our response
@@ -29,8 +29,7 @@ return ("Hello Team\n dogo \n alex")"""
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-#This is how you can send text to a number
+# This is how you can send text to a number
 '''message = client.messages \
                 .create(
                      body="Join Earth's mightiest heroes. Like Kevin Bacon.",
