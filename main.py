@@ -26,9 +26,16 @@ def main():
     print(response)
     msg_body = request.form["Body"]
     from_no = request.form['From']
-    if msg_body == 'cp':
-        response.message("Confirm with YES.")
-        pending.append([from_no, 'Crystal Palace'])
+
+    team_name = search(msg_body)
+    response.append('To confirm the subscription for the team {}, please reply with yes.'.format(team_name))
+    pending.append([from_no, team_name])
+    for sub in subscribers:
+        if sub == from_no:
+            for team in sub[from_no]:
+                if team == team_name:
+                    response.message("You have already subscribed to {}.".format(team_name))
+
     for temp in pending:
         if from_no == temp[0]:
             if msg_body == 'yes':
@@ -38,6 +45,8 @@ def main():
                 json.dump(subscribers, open('SubList.txt', 'w+'))
                 print('dumped')
     return str(response)
+
+def search(input):
 
 
 if __name__ == '__main__':

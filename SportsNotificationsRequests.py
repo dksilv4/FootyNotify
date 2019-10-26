@@ -15,6 +15,7 @@ def search_for_name(team_name):
 
     data = json.loads(response.text)
 
+
     fatList = data['api']['teams']
     result = (fatList[0]["name"])
 
