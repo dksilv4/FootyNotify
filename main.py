@@ -61,6 +61,8 @@ def main():
     elif msg_body.__contains__("LINEUP"):
         '''insert lineup for last fixture code here'''
         return str(response)
+    elif msg_body.__contains__("NEXT"):
+        return str(response)
     elif msg_body.__contains__("LIVE"):
         print(request.form)
         msg_body = request.form["Body"]
@@ -73,6 +75,13 @@ def main():
         else:
             response.message(live_results)
         return str(response)
+    elif msg_body.__contains__("HELP"):
+        response.message(
+            "SUBSCRIBE (Team Name) - Adds subscription to a team of your choice.\n "
+            "LAST (Team Name) - Replies with the last game played for your team with score. "
+            "\nLINEUP (Team Name) - Replies the lineup for the team's most recent game. \n"
+            "NEXT (Team Name) - Replies with the next fixture and when."
+            " \nLIVE (Team Name) - Replies with the current game your team is playing (If they are playing). \n ")
 
 
 if __name__ == '__main__':
