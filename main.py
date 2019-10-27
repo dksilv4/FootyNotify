@@ -69,7 +69,7 @@ def main():
         print(msg_body, from_no)
         live_results = sport.get_live_game(team_id)
         if live_results is None:
-            response.message("{} isn't currently playing.".format(team_name))
+            response.message("{} are currently playing.".format(team_name))
         else:
             response.message(live_results)
         return str(response)
@@ -80,4 +80,5 @@ if __name__ == '__main__':
 
 # TODO: Complete function call i.e.
 # TODO:SUBSCRIBE team_name (to subscribe) LAST team_name (for last game)  NEXT team_name (for next game) LINEUP team_name (for next lineup) LIVE team_name (for live fixture)
-#TODO: Add to the SUBSCRIBE function the ability to give updates each week/whenever the user decides (TBD)
+# TODO: Add to the SUBSCRIBE function the ability to give updates each week/whenever the user decides (TBD)
+# TODO: Add a LINEUP function to the program detailing the lineup for the last game.
