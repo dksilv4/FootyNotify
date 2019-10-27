@@ -1,3 +1,4 @@
+from datetime import datetime
 import requests
 import json
 
@@ -7,7 +8,7 @@ url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/"+userTeam
 
 headers = {
     'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-    'x-rapidapi-key': "3e912ca4e7msh3e11bf13a48a111p1e25fdjsnf736c67d588a"
+    'x-rapidapi-key': "82f50635a5msh6505487684c7ecfp16c7bbjsn5008a39862cb"
     }
 
 response = requests.request("GET", url, headers=headers)
@@ -51,14 +52,47 @@ response3 = requests.request("GET", url3, headers=headers, params=querystring)
 fixtureData = json.loads(response3.text)
 fixtures = fixtureData['api']['fixtures']
 
-##vars, loop to append values into list
+##vars, loop to append values into list, compare recent dates
 n=0
 fixtureList = []
-for n in range(5):
-    lastFixture = fixtures[n]['homeTeam']['team_name']+" "+str(fixtures[n]['goalsHomeTeam'])+"-"+str(fixtures[n]['goalsAwayTeam'])+" "+fixtures[n]['awayTeam']['team_name']
-    fixtureList.append(lastFixture)
+fixturesLength = len(fixtures)
+
+for n in range(fixturesLength):
+    ##if list size == 5 break
+    if len(fixtureList) > 4:
+        break
+
+    ##compares date to pull previous match scores
+    elif ((fixtures[fixturesLength-1-n]['event_date'])[0:10] < datetime.today().strftime('%Y-%m-%d')):
+        lastFixture = fixtures[fixturesLength - 1 - n]['homeTeam']['team_name'] + " " + str(
+            fixtures[fixturesLength - 1 - n]['goalsHomeTeam']) + "-" + str(
+            fixtures[fixturesLength - 1 - n]['goalsAwayTeam']) + " " + fixtures[fixturesLength - 1 - n]['awayTeam'][
+                          'team_name']
+        fixtureList.append(lastFixture)
+    else:
+        continue
+
+##Last 5 match results
 
 print(fixtureList)
+
+##Next fixture
+
+for n in range(fixturesLength):
+
+    ##checks for game with ext game greater than current date and previous game less than current date, prints fixture
+    if ((fixtures[fixturesLength - 1 - n]['event_date'])[0:10] > datetime.today().strftime('%Y-%m-%d')) and ((fixtures[fixturesLength - 2 - n]['event_date'])[0:10] < datetime.today().strftime('%Y-%m-%d')):
+        nextFixture = fixtures[fixturesLength - 1 - n]['homeTeam']['team_name'] + " VS " \
+                      + fixtures[fixturesLength - 1 - n]['awayTeam'][
+                          'team_name']
+        break
+
+print(nextFixture)
+
+
+
+
+
 
 
 
