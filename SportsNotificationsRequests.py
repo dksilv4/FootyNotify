@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 '''Requests that use the API to search for various things including the Team details/name/id/ fixtures'''
 token = '3e912ca4e7msh3e11bf13a48a111p1e25fdjsnf736c67d588a'
 
@@ -13,9 +14,8 @@ def search(team_name):
         'x-rapidapi-key': token
     }  # must hide
 
-    response = requests.request("GET", url, headers=headers)
-
-    data = json.loads(response.text)  # the data from all matching football teams
+response = requests.request("GET", url, headers=headers)
+data = json.loads(response.text)  # the data from all matching football teams
 
     fatList = data['api']['teams']
     result = (fatList[0]["name"])
