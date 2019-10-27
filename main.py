@@ -27,35 +27,40 @@ def main():
     msg_body = request.form["Body"]
     from_no = request.form['From']
     print(msg_body, from_no)
-    if "SUBSCRIBE" in msg_body == True:
-        for temp in pending:
-            if from_no == temp[0]:
-                if msg_body == 'yes':
-                    response.message('You have subbed!')
-                    subscribers[temp[0]].append(temp[1])
-                    pending.remove(temp)
-                    json.dump(subscribers, open('SubList.txt', 'w+'))
-                    print('dumped')
-                    return str(response)
-
+    for temp in pending:
+        if from_no == temp[0]:
+            if msg_body.lower() == 'yes':
+                response.message('You have subbed!')
+                subscribers[temp[0]].append(temp[1])
+                pending.remove(temp)
+                json.dump(subscribers, open('SubList.txt', 'w+'))
+                print('dumped')
+                print(response)
+            return str(response)
+    if msg_body.__contains__("SUBSCRIBE"):
         if len(pending) < 1:
             print("Calling the API!")
-            team_name = sport.search_for_name(msg_body)
+            team_name = sport.search_for_name(msg_body.replace("SUBSCRIBE ", ""))
             response.message('To confirm the subscription for the team {}, please reply with yes.'.format(team_name))
             pending.append([from_no, team_name])
-            return str(response)
-    elif "LAST" in msg_body == True:
+            print("returning text...")
+            print(response)
+        return str(response)
+    elif "LAST" in msg_body is True:
         '''insert last fixture code here'''
         return str(response)
-    elif "NEXT" in msg_body == True:
+    elif "NEXT" in msg_body is True:
         '''insert next fixture code here'''
         return str(response)
-    elif "LINEUP" in msg_body == True:
+    elif "LINEUP" in msg_body is True:
         '''insert lineup for last fixture code here'''
         return str(response)
-    elif "LIVE" in msg_body == True:
+    elif "LIVE" in msg_body is True:
         '''insert live fixture code here'''
         return str(response)
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 

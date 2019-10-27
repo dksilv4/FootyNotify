@@ -1,13 +1,13 @@
 import requests
 import json
 '''Requests that use the API to search for various things including the Team details/name/id/ fixtures'''
-
+token = '3e912ca4e7msh3e11bf13a48a111p1e25fdjsnf736c67d588a'
 def search_for_name(team_name):
     url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
 
     headers = {
         'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': "c50156e257msh58be36df0d85bfep10de4cjsn14479e1c8f49"
+        'x-rapidapi-key': token
     }  # must hide
 
     response = requests.request("GET", url, headers=headers)
@@ -25,7 +25,7 @@ def search_for_team_id(team_name):
 
     headers = {
         'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': "c50156e257msh58be36df0d85bfep10de4cjsn14479e1c8f49"
+        'x-rapidapi-key': token
     }  # must hide
 
     response = requests.request("GET", url, headers=headers)
@@ -42,7 +42,7 @@ def search_for_team_details(team_name):
 
     headers = {
         'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': "c50156e257msh58be36df0d85bfep10de4cjsn14479e1c8f49"
+        'x-rapidapi-key': token
     }  # must hide
 
     response = requests.request("GET", url, headers=headers)
@@ -58,7 +58,7 @@ def search_to_file(team_name):
 
     headers = {
         'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': "c50156e257msh58be36df0d85bfep10de4cjsn14479e1c8f49"
+        'x-rapidapi-key': token
     }  # must hide
 
     response = requests.request("GET", url, headers=headers) #the data from all matching football teams
@@ -73,7 +73,7 @@ def get_live_game(teamID):
     querystring = {"timezone": "Europe/London"}
     headers = {
         'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': "c50156e257msh58be36df0d85bfep10de4cjsn14479e1c8f49"
+        'x-rapidapi-key': token
     }  # must hide
     ##requests Live fixtures
     response2 = requests.request("GET", "https://api-football-v1.p.rapidapi.com/v2/fixtures/live/", headers=headers,
