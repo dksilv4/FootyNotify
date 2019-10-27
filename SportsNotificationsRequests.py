@@ -1,5 +1,81 @@
+from datetime import datetime
 import requests
 import json
+
+##url for fixtures, arg is teamID
+url3 = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/"+str(teamID)
+
+##request
+response3 = requests.request("GET", url3, headers=headers, params=querystring)
+
+##loads to json format
+fixtureData = json.loads(response3.text)
+fixtures = fixtureData['api']['fixtures']
+
+##vars, loop to append values into list, compare recent dates
+n=0
+fixtureList = []
+fixturesLength = len(fixtures)
+
+for n in range(fixturesLength):
+    ##if list size == 5 break
+    if len(fixtureList) > 4:
+        break
+
+    ##compares date to pull previous match scores
+    elif ((fixtures[fixturesLength-1-n]['event_date'])[0:10] < datetime.today().strftime('%Y-%m-%d')):
+        lastFixture = fixtures[fixturesLength - 1 - n]['homeTeam']['team_name'] + " " + str(
+            fixtures[fixturesLength - 1 - n]['goalsHomeTeam']) + "-" + str(
+            fixtures[fixturesLength - 1 - n]['goalsAwayTeam']) + " " + fixtures[fixturesLength - 1 - n]['awayTeam'][
+                          'team_name']
+        fixtureList.append(lastFixture)
+    else:
+        continue
+
+##Last 5 match results
+
+print(fixtureList)
+
+##Next fixture
+
+for n in range(fixturesLength):
+
+    ##checks for game with ext game greater than current date and previous game less than current date, prints fixture
+    if ((fixtures[fixturesLength - 1 - n]['event_date'])[0:10] > datetime.today().strftime('%Y-%m-%d')) and ((fixtures[fixturesLength - 2 - n]['event_date'])[0:10] < datetime.today().strftime('%Y-%m-%d')):
+        nextFixture = fixtures[fixturesLength - 1 - n]['homeTeam']['team_name'] + " VS " \
+                      + fixtures[fixturesLength - 1 - n]['awayTeam'][
+                          'team_name']
+        break
+
+print(nextFixture)
+
+##Standings function
+
+url4 = "https://api-football-v1.p.rapidapi.com/v2/leagues/team/"+str(teamID) ##arg is teamID
+
+response4 = requests.request("GET", url4, headers=headers, params=querystring) ##request
+
+##Grabs leagueID based off teamID
+leaguesData = json.loads(response4.text)
+leaguesList = leaguesData['api']['leagues']
+leagueID = leaguesList[0]['league_id']
+
+print(leagueID)
+
+##Request for standings based off leagueID
+url5 = "https://api-football-v1.p.rapidapi.com/v2/leagueTable/"+str(leagueID)
+
+response5 = requests.request("GET", url5, headers=headers, params=querystring) ##request
+
+standingsData = json.loads(response5.text)
+standingsList = standingsData['api']['standings'][0]
+standingsLength = len(standingsList)
+
+leagueTable = [] ##Define league table and append rank, name and points to an entry
+for y in range(standingsLength):
+    tableEntry = str(standingsList[y]['rank']) + ". " + standingsList[y]['teamName'] + ", Pts: " + str(standingsList[y]['points'])
+    leagueTable.append(tableEntry)
+print(leagueTable)
 
 '''Requests that use the API to search for various things including the Team details/name/id/ fixtures'''
 token = '3e912ca4e7msh3e11bf13a48a111p1e25fdjsnf736c67d588a'
@@ -9,7 +85,7 @@ headers = {'x-rapidapi-host': "api-football-v1.p.rapidapi.com", 'x-rapidapi-key'
 def search(team_name):
     url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
     response = requests.request("GET", url, headers=headers)
-    data = json.loads(response.text)  # the data from all matching football teams
+    data = json.loads(response.text)  # the data from all matching football team
 
     fatList = data['api']['teams']
     result = (fatList[0]["name"])
