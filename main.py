@@ -66,6 +66,7 @@ def main():
         return str(response)
 
     elif msg_body.__contains__("NEXT"):
+
         return str(response)
 
     elif msg_body.__contains__("LIVE"):
@@ -93,3 +94,4 @@ if __name__ == '__main__':
 # TODO:SUBSCRIBE team_name (to subscribe) LAST team_name (for last game)  NEXT team_name (for next game) LINEUP team_name (for next lineup) LIVE team_name (for live fixture)
 # TODO: Add to the SUBSCRIBE function the ability to give updates each week/whenever the user decides (TBD)
 # TODO: Add a LINEUP function to the program detailing the lineup for the last game.
+#TODO: STANDINGS
