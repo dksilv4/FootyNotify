@@ -47,13 +47,21 @@ def main():
             print(response)
         return str(response)
     elif msg_body.__contains__("LAST"):
-        '''insert last fixture code here'''
+        print(request.form)
+        msg_body = request.form["Body"]
+        from_no = request.form['From']
+        team_id, team_name = sport.search(msg_body.replace("LAST ", ""))
+        print(msg_body, from_no)
+        last_results = sport.get_last_five(team_id)
+        if last_results is None:
+            response.message("{} has no recent games.".format(team_name))
+        else:
+            response.message(last_results)
         return str(response)
     elif msg_body.__contains__("LINEUP"):
         '''insert lineup for last fixture code here'''
         return str(response)
     elif msg_body.__contains__("LIVE"):
-        response = MessagingResponse()
         print(request.form)
         msg_body = request.form["Body"]
         from_no = request.form['From']
@@ -72,3 +80,4 @@ if __name__ == '__main__':
 
 # TODO: Complete function call i.e.
 # TODO:SUBSCRIBE team_name (to subscribe) LAST team_name (for last game)  NEXT team_name (for next game) LINEUP team_name (for next lineup) LIVE team_name (for live fixture)
+#TODO: Add to the SUBSCRIBE function the ability to give updates each week/whenever the user decides (TBD)
