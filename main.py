@@ -40,7 +40,7 @@ def main():
     if msg_body.__contains__("SUBSCRIBE"):
         if len(pending) < 1:
             print("Calling the API!")
-            team_name = sport.search_for_name(msg_body.replace("SUBSCRIBE ", ""))
+            team_id, team_name = sport.search(msg_body.replace("SUBSCRIBE ", ""))
             response.message('To confirm the subscription for the team {}, please reply with yes.'.format(team_name))
             pending.append([from_no, team_name])
             print("returning text...")
@@ -57,11 +57,14 @@ def main():
         print(request.form)
         msg_body = request.form["Body"]
         from_no = request.form['From']
-        team_name = sport.search_for_name(msg_body.replace("LIVE ", ""))
+        team_id, team_name = sport.search(msg_body.replace("LIVE ", ""))
         print(msg_body, from_no)
-        sport.get_live_game(sport.search_for_team_id(team_name))
+        live_results = sport.get_live_game(team_id)
+        if live_results is None:
+            response.message("{} isn't currently playing.".format(team_name))
+        else:
+            response.message(live_results)
         return str(response)
-
 
 
 if __name__ == '__main__':
