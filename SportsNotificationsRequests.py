@@ -5,6 +5,7 @@ import json
 token = '3e912ca4e7msh3e11bf13a48a111p1e25fdjsnf736c67d588a'
 headers = {'x-rapidapi-host': "api-football-v1.p.rapidapi.com", 'x-rapidapi-key': token}
 
+
 def search(team_name):
     url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
     response = requests.request("GET", url, headers=headers)
@@ -36,26 +37,31 @@ def get_live_game(teamID):
             home_team_score = y['goalsHomeTeam']
             away_team_name = y['goalsAwayTeam']
             away_team_score = y['awayTeam']['team_name']
-            return '{} {} - {} {}'.format(home_team_name, home_team_score, away_team_score, away_team_name)
+            return
         else:
             return None
+
 
 def get_last_five(teamID):
     ##url for fixtures, arg is teamID
     querystring = {"timezone": "Europe/London"}
     ##request
-    response = requests.request("GET", "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/" + str(teamID), headers=headers, params=querystring)
+    response = requests.request("GET", "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/" + str(teamID),
+                                headers=headers, params=querystring)
 
     ##loads to json format
     fixtureData = json.loads(response.text)
     fixtures = fixtureData['api']['fixtures']
 
-    ##vars, loop to append values into list
-    n = 0
-    fixtureList = []
-    for n in range(5):
-        lastFixture = fixtures[n]['homeTeam']['team_name'] + " " + str(fixtures[n]['goalsHomeTeam']) + "-" + str(
-            fixtures[n]['goalsAwayTeam']) + " " + fixtures[n]['awayTeam']['team_name']
-        fixtureList.append(lastFixture)
+    # vars, loop to append values into list
+    fixture_list = ["Here are the last five games:"]
+    for n in range(0, 5):
+        home_team_name = fixtures[n]['homeTeam']['team_name']
+        home_team_score = fixtures[n]['goalsHomeTeam']
+        away_team_score = fixtures[n]['goalsAwayTeam']
+        away_team_name = fixtures[n]['awayTeam']['team_name']
+        fixture = '{} {} - {} {}'.format(home_team_name, home_team_score, away_team_score, away_team_name)
+        fixture_list.append(fixture)
+    print(fixture_list)
 
-    return fixtureList
+    return fixture_list
