@@ -5,7 +5,7 @@ import json
 token = '3e912ca4e7msh3e11bf13a48a111p1e25fdjsnf736c67d588a'
 
 
-def search_for_name(team_name):
+def search(team_name):
     url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
 
     headers = {
@@ -20,57 +20,7 @@ def search_for_name(team_name):
     fatList = data['api']['teams']
     result = (fatList[0]["name"])
     print(fatList[0])
-    return result
-
-
-def search_for_team_id(team_name):
-    url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
-
-    headers = {
-        'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': token
-    }  # must hide
-
-    response = requests.request("GET", url, headers=headers)
-
-    data = json.loads(response.text)  # the data from all matching football teams
-
-    fatList = data['api']['teams']
-    result = (fatList[0]["team_id"])
-    return result
-
-
-def search_for_team_details(team_name):
-    url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
-
-    headers = {
-        'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': token
-    }  # must hide
-
-    response = requests.request("GET", url, headers=headers)
-
-    data = json.loads(response.text)  # the data from all matching football teams
-
-    fatList = data['api']['teams']
-    return fatList[0]
-
-
-def search_to_file(team_name):
-    url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
-
-    headers = {
-        'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-        'x-rapidapi-key': token
-    }  # must hide
-
-    response = requests.request("GET", url, headers=headers)  # the data from all matching football teams
-
-    data = json.loads(response.text)
-
-    fatList = data['api']['teams']
-    filewrite = open('testAPI.txt', 'a+').write(str(fatList[0]))
-
+    return fatList[0]['team_id'], fatList[0]['name']
 
 def get_live_game(teamID):
     querystring = {"timezone": "Europe/London"}

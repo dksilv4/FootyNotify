@@ -7,3 +7,4 @@ if string.__contains__("SUBSCRIBE"):
     print("YES")
 else:
     print("NO")
+
