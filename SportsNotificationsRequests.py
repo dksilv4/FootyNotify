@@ -2,8 +2,9 @@ import requests
 import json
 
 '''Requests that use the API to search for various things including the Team details/name/id/ fixtures'''
-token = '3e912ca4e7msh3e11bf13a48a111p1e25fdjsnf736c67d588a'
+token = '82f50635a5msh6505487684c7ecfp16c7bbjsn5008a39862cb'
 headers = {'x-rapidapi-host': "api-football-v1.p.rapidapi.com", 'x-rapidapi-key': token}
+querystring = {"timezone": "Europe/London"}
 
 
 def search(team_name):
@@ -18,8 +19,6 @@ def search(team_name):
 
 
 def get_live_game(teamID):
-    querystring = {"timezone": "Europe/London"}
-
     # requests Live fixtures
     response = requests.request("GET", "https://api-football-v1.p.rapidapi.com/v2/fixtures/live/", headers=headers,
                                 params=querystring)
@@ -43,8 +42,6 @@ def get_live_game(teamID):
 
 
 def get_last_five(teamID):
-    ##url for fixtures, arg is teamID
-    querystring = {"timezone": "Europe/London"}
     ##request
     response = requests.request("GET", "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/" + str(teamID),
                                 headers=headers, params=querystring)
@@ -65,3 +62,34 @@ def get_last_five(teamID):
     print(fixture_list)
 
     return fixture_list
+
+
+def get_leagueid(teamID):
+    url4 = "https://api-football-v1.p.rapidapi.com/v2/leagues/team/" + str(teamID)  ##arg is teamID
+
+    response4 = requests.request("GET", url4, headers=headers, params=querystring)  ##request
+
+    ##Grabs leagueID based off teamID
+    leaguesData = json.loads(response4.text)
+    leaguesList = leaguesData['api']['leagues']
+    leagueID = leaguesList[0]['league_id']
+
+    print(leagueID)
+
+
+def get_standing_fixture(leagueID):
+    ##Request for standings based off leagueID
+    url5 = "https://api-football-v1.p.rapidapi.com/v2/leagueTable/" + str(leagueID)
+
+    response5 = requests.request("GET", url5, headers=headers, params=querystring)  ##request
+
+    standingsData = json.loads(response5.text)
+    standingsList = standingsData['api']['standings'][0]
+    standingsLength = len(standingsList)
+
+    leagueTable = []  ##Define league table and append rank, name and points to an entry
+    for y in range(standingsLength):
+        tableEntry = str(standingsList[y]['rank']) + ". " + standingsList[y]['teamName'] + ", Pts: " + str(
+            standingsList[y]['points'])
+        leagueTable.append(tableEntry)
+    print(leagueTable)
