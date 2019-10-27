@@ -46,17 +46,20 @@ def main():
             print("returning text...")
             print(response)
         return str(response)
-    elif "LAST" in msg_body is True:
+    elif msg_body.__contains__("LAST"):
         '''insert last fixture code here'''
         return str(response)
-    elif "NEXT" in msg_body is True:
-        '''insert next fixture code here'''
-        return str(response)
-    elif "LINEUP" in msg_body is True:
+    elif msg_body.__contains__("LINEUP"):
         '''insert lineup for last fixture code here'''
         return str(response)
-    elif "LIVE" in msg_body is True:
-        '''insert live fixture code here'''
+    elif msg_body.__contains__("LIVE"):
+        response = MessagingResponse()
+        print(request.form)
+        msg_body = request.form["Body"]
+        from_no = request.form['From']
+        team_name = sport.search_for_name(msg_body.replace("LIVE ", ""))
+        print(msg_body, from_no)
+        sport.get_live_game(sport.search_for_team_id(team_name))
         return str(response)
 
 
