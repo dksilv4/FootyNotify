@@ -31,7 +31,11 @@ def main():
         if from_no == temp[0]:
             if msg_body.lower() == 'yes':
                 response.message('You have subbed!')
-                subscribers[temp[0]].append(temp[1])
+                try:
+                    subscribers[temp[0]].append(temp[1])
+                except Exception as e:
+                    print(e)
+                    subscribers[temp[0]] = temp[1]
                 pending.remove(temp)
                 json.dump(subscribers, open('SubList.txt', 'w+'))
                 print('dumped')
@@ -46,27 +50,25 @@ def main():
             print("returning text...")
             print(response)
         return str(response)
+
     elif msg_body.__contains__("LAST"):
-        print(request.form)
-        msg_body = request.form["Body"]
-        from_no = request.form['From']
         team_id, team_name = sport.search(msg_body.replace("LAST ", ""))
-        print(msg_body, from_no)
         last_results = sport.get_last_five(team_id)
-        if last_results is None:
+        if len(last_results) < 2:
             response.message("{} has no recent games.".format(team_name))
         else:
-            response.message(last_results)
+            for game in last_results:
+                response.message(game)
         return str(response)
+
     elif msg_body.__contains__("LINEUP"):
         '''insert lineup for last fixture code here'''
         return str(response)
+
     elif msg_body.__contains__("NEXT"):
         return str(response)
+
     elif msg_body.__contains__("LIVE"):
-        print(request.form)
-        msg_body = request.form["Body"]
-        from_no = request.form['From']
         team_id, team_name = sport.search(msg_body.replace("LIVE ", ""))
         print(msg_body, from_no)
         live_results = sport.get_live_game(team_id)
