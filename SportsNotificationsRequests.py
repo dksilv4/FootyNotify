@@ -2,7 +2,7 @@ from datetime import datetime
 import requests
 import json
 
-userTeam = "Deportivo Capiata" ##type in team that are playing live
+userTeam = "Nottingham Forest" ##type in team that are playing live
 
 url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/"+userTeam
 
@@ -88,6 +88,46 @@ for n in range(fixturesLength):
         break
 
 print(nextFixture)
+
+##Standings function
+
+url4 = "https://api-football-v1.p.rapidapi.com/v2/leagues/team/"+str(teamID) ##arg is teamID
+
+response4 = requests.request("GET", url4, headers=headers, params=querystring) ##request
+
+##Grabs leagueID based off teamID
+leaguesData = json.loads(response4.text)
+leaguesList = leaguesData['api']['leagues']
+leagueID = leaguesList[0]['league_id']
+
+print(leagueID)
+
+##Request for standings based off leagueID
+url5 = "https://api-football-v1.p.rapidapi.com/v2/leagueTable/"+str(leagueID)
+
+response5 = requests.request("GET", url5, headers=headers, params=querystring) ##request
+
+standingsData = json.loads(response5.text)
+standingsList = standingsData['api']['standings'][0]
+standingsLength = len(standingsList)
+
+leagueTable = [] ##Define league table and append rank, name and points to an entry
+for y in range(standingsLength):
+    tableEntry = str(standingsList[y]['rank']) + ". " + standingsList[y]['teamName'] + ", Pts: " + str(standingsList[y]['points'])
+    leagueTable.append(tableEntry)
+print(leagueTable)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
