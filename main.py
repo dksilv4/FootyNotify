@@ -31,7 +31,11 @@ def main():
         if from_no == temp[0]:
             if msg_body.lower() == 'yes':
                 response.message('You have subbed!')
-                subscribers[temp[0]].append(temp[1])
+                try:
+                    subscribers[temp[0]].append(temp[1])
+                except Exception as e:
+                    print(e)
+                    subscribers[temp[0]] = temp[1]
                 pending.remove(temp)
                 json.dump(subscribers, open('SubList.txt', 'w+'))
                 print('dumped')
@@ -40,25 +44,36 @@ def main():
     if msg_body.__contains__("SUBSCRIBE"):
         if len(pending) < 1:
             print("Calling the API!")
-            team_name = sport.search_for_name(msg_body.replace("SUBSCRIBE ", ""))
+            team_id, team_name = sport.search(msg_body.replace("SUBSCRIBE ", ""))
             response.message('To confirm the subscription for the team {}, please reply with yes.'.format(team_name))
             pending.append([from_no, team_name])
             print("returning text...")
             print(response)
         return str(response)
-    elif "LAST" in msg_body is True:
-        '''insert last fixture code here'''
-        return str(response)
-    elif "NEXT" in msg_body is True:
-        '''insert next fixture code here'''
-        return str(response)
-    elif "LINEUP" in msg_body is True:
-        '''insert lineup for last fixture code here'''
-        return str(response)
-    elif "LIVE" in msg_body is True:
-        '''insert live fixture code here'''
+
+    elif msg_body.__contains__("LAST"):
+        team_id, team_name = sport.search(msg_body.replace("LAST ", ""))
+        last_results = sport.get_last_five(team_id)
+        if len(last_results) < 2:
+            response.message("{} has no recent games.".format(team_name))
+        else:
+            for game in last_results:
+                response.message(game)
         return str(response)
 
+    elif msg_body.__contains__("LINEUP"):
+        '''insert lineup for last fixture code here'''
+        return str(response)
+
+    elif msg_body.__contains__("LIVE"):
+        team_id, team_name = sport.search(msg_body.replace("LIVE ", ""))
+        print(msg_body, from_no)
+        live_results = sport.get_live_game(team_id)
+        if live_results is None:
+            response.message("{} isn't currently playing.".format(team_name))
+        else:
+            response.message(live_results)
+        return str(response)
 
 
 if __name__ == '__main__':
@@ -66,3 +81,4 @@ if __name__ == '__main__':
 
 # TODO: Complete function call i.e.
 # TODO:SUBSCRIBE team_name (to subscribe) LAST team_name (for last game)  NEXT team_name (for next game) LINEUP team_name (for next lineup) LIVE team_name (for live fixture)
+#TODO: Add to the SUBSCRIBE function the ability to give updates each week/whenever the user decides (TBD)

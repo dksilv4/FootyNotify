@@ -1,41 +1,30 @@
 import schedule
 import time
 
+#TODO: enter some code to select how long and based on how long, select a choice from the switch case
 
-def switch_case_time(duration):
+def switch_case_time(choice):
     switcher = {
         1: "one",
         2: "two",
-        3: "three",
-        4: "four",
-        5: "five"
+        3: "three"
     }
-    print switcher.get(duration, "Invalid duration")
+    print switcher.get(choice, "Invalid duration")
 
 
-def one():
+def minute():
     minutes_inp = input("Every minute scheduler")
     schedule.every(minutes_inp).minutes.do(job, 'this is ' + minutes_inp + ' minutes')
 
 
-def two():
-    minutes_inp = input("Every minute scheduler")
-    schedule.every(minutes_inp).minutes.do(job, 'this is ' + minutes_inp + ' minutes')
+def hour():
+    minutes_inp = input("Every hour scheduler")
+    schedule.every(minutes_inp).hours.do(job, 'this is ' + minutes_inp + ' hours')
 
 
-def three():
-    minutes_inp = input("Every minute scheduler")
-    schedule.every(minutes_inp).minutes.do(job, 'this is ' + minutes_inp + ' minutes')
-
-
-def four():
-    minutes_inp = input("Every minute scheduler")
-    schedule.every(minutes_inp).minutes.do(job, 'this is ' + minutes_inp + ' minutes')
-
-
-def five():
-    minutes_inp = input("Every minute scheduler")
-    schedule.every(minutes_inp).minutes.do(job, 'this is ' + minutes_inp + ' minutes')
+def day():
+    minutes_inp = input("Every day scheduler")
+    schedule.every(minutes_inp).days.do(job, 'this is ' + minutes_inp + ' days')
 
 
 def job():
