@@ -3,7 +3,7 @@ import json
 
 
 '''Requests that use the API to search for various things including the Team details/name/id/ fixtures'''
-token = '82f50635a5msh6505487684c7ecfp16c7bbjsn5008a39862cb'
+token = []
 headers = {'x-rapidapi-host': "api-football-v1.p.rapidapi.com", 'x-rapidapi-key': token}
 
 
