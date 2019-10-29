@@ -3,9 +3,12 @@ import json
 from datetime import datetime
 import os
 
-# Requests that use the API to search for various things including the Team details/name/id/ fixtures
+
+
+
+'''Requests that use the API to search for various things including the Team details/name/id/ fixtures'''
 token = []
-token2 = os.environ.get('AUTH_RAPIDAPI')
+
 headers = {'x-rapidapi-host': "api-football-v1.p.rapidapi.com", 'x-rapidapi-key': token}
 
 
