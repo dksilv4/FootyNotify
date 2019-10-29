@@ -1,10 +1,14 @@
 import requests
 import json
+from datetime import datetime
+import os
+
 
 
 
 '''Requests that use the API to search for various things including the Team details/name/id/ fixtures'''
 token = []
+
 headers = {'x-rapidapi-host': "api-football-v1.p.rapidapi.com", 'x-rapidapi-key': token}
 
 
@@ -29,19 +33,16 @@ def get_live_game(teamID):
     live_game_data = json.loads(response.text)
     live_game_list = live_game_data['api']['fixtures']
 
-    for x in range(0, len(live_game_list)):  # takes list element, uses dict in a dict to grab team ID comparison
+    listLength = len(live_game_list)
+
+    for x in range(listLength - 1):  ##takes list element, uses dict in a dict to grab team ID comparison
         y = live_game_list[x]
-        home_team_id = y['homeTeam']['team_id']
-        away_team_id = y['awayTeam']['team_id']
-        if home_team_id == teamID or away_team_id == teamID:
-            # formats score output
-            home_team_name = y['homeTeam']['team_name']
-            home_team_score = y['goalsHomeTeam']
-            away_team_name = y['goalsAwayTeam']
-            away_team_score = y['awayTeam']['team_name']
-            return '{} {} - {} {}'.format(home_team_name, home_team_score, away_team_score, away_team_name)
-        else:
-            return None
+        if ((y['homeTeam']['team_id'] == teamID) | (y['awayTeam']['team_id'] == teamID)):
+            ##formats score
+            return (y['homeTeam']['team_name']) + " " + str(y['goalsHomeTeam']) + "-" + str(
+                y['goalsAwayTeam']) + " " + (y['awayTeam']['team_name'])
+    return None
+
 
 
 def get_last_five(teamID):
@@ -126,17 +127,20 @@ def get_standings(teamID):
 
     leagueTable = []  ##Define league table and append rank, name and points to an entry
     for y in range(standingsLength):
-        tableEntry = str(standingsList[y]['rank']) + ". " + standingsList[y]['teamName'] + ", Pts: " + str(
+        tableEntry = str(standingsList[y]['rank']) + ". " + standingsList[y]['teamName'] + " - Pts: " + str(
             standingsList[y]['points'])
         leagueTable.append(tableEntry)
-    return leagueTable
-
+        format1 = str(leagueTable).replace("[", "")  # this formats the standings so it can be texted to user
+        format2 = format1.replace("]", "")
+        format3 = format2.replace(",", "\n")
+        finalformatting = format3.replace("'", "")
+    return finalformatting
 
 
 '''-------------------------------------------------------'''
 
 
-def search(team_name):
+def search_new(team_name):
     url = "https://api-football-v1.p.rapidapi.com/v2/teams/search/" + team_name
     response = requests.request("GET", url, headers=headers)
     data = json.loads(response.text)  # the data from all matching football team
@@ -150,7 +154,7 @@ def search(team_name):
 '''-------------------------------------------------------'''
 
 
-def get_live_game(teamID):
+def get_live_game_new(teamID):
     querystring = {"timezone": "Europe/London"}
 
     # requests Live fixtures
@@ -170,7 +174,7 @@ def get_live_game(teamID):
             home_team_score = y['goalsHomeTeam']
             away_team_name = y['goalsAwayTeam']
             away_team_score = y['awayTeam']['team_name']
-            return
+            return '{} {} - {} {}'.format(home_team_name, home_team_score, away_team_score, away_team_name)
         else:
             return None
 
@@ -178,7 +182,7 @@ def get_live_game(teamID):
 '''-------------------------------------------------------'''
 
 
-def get_last_five(teamID):
+def get_last_five_new(teamID):
     querystring = {"timezone": "Europe/London"}
     ##url for fixtures, arg is teamID
     url3 = "https://api-football-v1.p.rapidapi.com/v2/fixtures/team/" + str(teamID)
@@ -211,6 +215,5 @@ def get_last_five(teamID):
             continue
 
     ##Last 5 match results
-
+    print(fixtureList)
     return fixtureList
-
