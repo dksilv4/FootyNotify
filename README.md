@@ -1,4 +1,4 @@
----Sports SMS Notifications---
+#FootyNotify
 
 A sports SMS service. The users inputs their team of choice and recieves updates before, during and after games including team sheets, scores and any other notable changes. 
 
