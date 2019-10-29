@@ -6,6 +6,8 @@ A sports SMS service. The users inputs their team of choice and recieves updates
 
 This is a free subscription based model- can be implemented for any form of sport and hits a target demographic of people who reguarly have used SMS their whole life. There may be room for implementation for esports, but doesn't hit the target market as hard.
 
+Created at HackTheMidlands 2019.
+
 Uses
 
 >Python
