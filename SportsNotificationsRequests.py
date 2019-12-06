@@ -8,7 +8,6 @@ import os
 
 '''Requests that use the API to search for various things including the Team details/name/id/ fixtures'''
 token = []
-
 headers = {'x-rapidapi-host': "api-football-v1.p.rapidapi.com", 'x-rapidapi-key': token}
 
 
